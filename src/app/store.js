@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import loginReducer from '../Components/Login/loginSlice'
-import budgetPlannerReducer from '../components/BudgetPlanner/budgetPlannerSlice';
+import budgetPlannerReducer from '../Components/BudgetPlanner/budgetPlannerSlice'
 
 export default configureStore({
   reducer: {
