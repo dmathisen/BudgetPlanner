@@ -55,6 +55,7 @@ export function BudgetPlanner() {
     var auth2 = window.gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       dispatch(logOut());
+      window.location.reload(false);
     });
   };
 

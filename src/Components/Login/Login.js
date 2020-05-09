@@ -20,7 +20,7 @@ export function Login() {
   const handleLogInFail = () => {
     alert('Sign in failed');
     dispatch(logOut());
-    return;
+    window.location.reload(false);
   };
 
   return (
