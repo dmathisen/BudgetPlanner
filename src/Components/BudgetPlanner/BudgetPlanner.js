@@ -14,11 +14,29 @@ export function BudgetPlanner() {
   // local state
   const [contribution, setContribution] = useState(15);
   const [salary, setSalary] = useState(null);
+  const [expense, setExpense] = useState(null);
+  const [savings, setSavings] = useState(null);
 
   useEffect(() => {
-    console.log('salary', salary);
-    console.log('contribution', contribution);
+    if (contribution && salary) {
+      setExpense(calculateExpense(contribution, salary));
+      setSavings(calculateSavings(contribution, salary));
+    } else {
+      setExpense(null);
+      setSavings(null);
+    }
   }, [contribution, salary]);
+
+  // calculations
+  const calculateExpense = (contribution, salary) => {
+    const expense = (salary / 12) * (contribution / 100);
+    return expense.toFixed(2);
+  };
+  
+  const calculateSavings = (contribution, salary) => {
+    const savings = (salary / 12) * (1 - (contribution / 100));
+    return savings.toFixed(2);
+  };
 
   // events
   const handleChange = e => {
@@ -76,8 +94,9 @@ export function BudgetPlanner() {
             <label>
               <span>Your Salary ($)</span>
               <input
-                type="text"
+                type="number"
                 name="salary"
+                min="0"
                 autoComplete="off"
                 onChange={handleChange}>
               </input>
@@ -87,14 +106,14 @@ export function BudgetPlanner() {
           <div>
             <label>
               <span>Your Expense</span>
-              <span>$x</span>
+              <span>${expense}</span>
             </label>
           </div>
 
           <div>
             <label>
               <span>Your Savings</span>
-              <span>$x</span>
+              <span>${savings}</span>
             </label>
           </div>
 
