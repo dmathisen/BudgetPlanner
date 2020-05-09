@@ -20,6 +20,8 @@ export function ThankYou() {
     if (contribution && salary) {
       setExpense(calculateExpense(contribution, salary));
       setSavings(calculateSavings(contribution, salary));
+    } else {
+      history.push("/");
     }
   }, [contribution, salary]);
 
