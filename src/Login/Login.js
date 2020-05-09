@@ -1,19 +1,25 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn, logOut } from './loginSlice';
+
 import { GoogleLogin } from 'react-google-login';
 
 export function Login() {
-  const onSignIn = (googleUser) => {
+  const dispatch = useDispatch();
+
+  const handleLogIn = (googleUser) => {
     const profile = googleUser.getBasicProfile();
-    if (!profile) onSignInFail();
+    if (!profile) handleLogInFail();
 
-    const userName = profile.getGivenName() || null;
-    if (!userName) onSignInFail();
+    const userName = profile.getGivenName();
+    if (!userName) handleLogInFail();
 
-    console.log('logged in!', profile);
+    dispatch(logIn({userName}));
   };
 
-  const onSignInFail = () => {
-    alert('Sign in failed :(');
+  const handleLogInFail = () => {
+    alert('Sign in failed');
+    dispatch(logOut());
     return;
   };
 
@@ -23,8 +29,8 @@ export function Login() {
 
       <GoogleLogin
         clientId="217893932068-65c992qbfukfa5drj6n20mqso2h6hck6.apps.googleusercontent.com"
-        onSuccess={onSignIn}
-        onFailure={onSignInFail}
+        onSuccess={handleLogIn}
+        onFailure={handleLogInFail}
         isSignedIn={true} />
     </>
   );
