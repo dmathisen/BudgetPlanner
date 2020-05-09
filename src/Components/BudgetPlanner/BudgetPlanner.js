@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Login } from '../Login/Login';
@@ -7,6 +8,7 @@ import { logOut } from '../Login/loginSlice';
 import { setContribution, setSalary } from './budgetPlannerSlice'
 
 export function BudgetPlanner() {
+  let history = useHistory();
   const dispatch = useDispatch();
 
   // global state
@@ -56,7 +58,7 @@ export function BudgetPlanner() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('Submitted!');
+    history.push("/thank-you");
   }
 
   const handleSignOut = e => {
@@ -100,6 +102,7 @@ export function BudgetPlanner() {
                 name="salary"
                 min="0"
                 autoComplete="off"
+                value={salary}
                 onChange={handleChange}>
               </input>
             </label>
