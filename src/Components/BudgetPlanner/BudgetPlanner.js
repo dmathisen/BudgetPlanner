@@ -47,7 +47,10 @@ export function BudgetPlanner() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    history.push("/thank-you");
+
+    if (contribution && salary) {
+      history.push("/thank-you");
+    }
   }
 
   const handleSignOut = e => {
