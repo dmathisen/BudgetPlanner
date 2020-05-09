@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Login } from '../Login/Login';
@@ -7,17 +7,27 @@ import { logOut } from '../Login/loginSlice';
 export function BudgetPlanner() {
   const dispatch = useDispatch();
 
+  // global state
   const isLoggedIn = useSelector(state => state.login.isLoggedIn);
   const userName = useSelector(state => state.login.userName);
+
+  // local state
+  const [contribution, setContribution] = useState(15);
+  const [salary, setSalary] = useState(null);
+
+  useEffect(() => {
+    console.log('salary', salary);
+    console.log('contribution', contribution);
+  }, [contribution, salary]);
 
   // events
   const handleChange = e => {
     switch(e.target.name) {
       case 'salary':
-        console.log('salary changed', e.target.value);
+        setSalary(e.target.value);
         break;
       case 'contribution':
-        console.log('contribution changed', e.target.value);
+        setContribution(e.target.value);
         break;
       default:
          return;
@@ -50,6 +60,7 @@ export function BudgetPlanner() {
               name="contribution"
               min="1"
               max="30"
+              value={contribution}
               onChange={handleChange}>
             </input>
           </div>
@@ -57,7 +68,7 @@ export function BudgetPlanner() {
           <div>
             <label>
               <span>Your Contribution</span>
-              <span>x%</span>
+              <span>{contribution}%</span>
             </label>
           </div>
 
