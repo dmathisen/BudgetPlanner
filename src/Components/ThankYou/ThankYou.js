@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
+
+import { calculateExpense, calculateSavings } from '../BudgetPlanner/budgetPlannerSlice'
 
 export function ThankYou() {
   let history = useHistory();
@@ -9,6 +11,17 @@ export function ThankYou() {
   const userName = useSelector(state => state.login.userName);
   const contribution = useSelector(state => state.budgetPlanner.contribution);
   const salary = useSelector(state => state.budgetPlanner.salary);
+
+  // local state
+  const [expense, setExpense] = useState(null);
+  const [savings, setSavings] = useState(null);
+
+  useEffect(() => {
+    if (contribution && salary) {
+      setExpense(calculateExpense(contribution, salary));
+      setSavings(calculateSavings(contribution, salary));
+    }
+  }, [contribution, salary]);
 
   // events
   const handleGoBackClick = e => {
@@ -37,14 +50,14 @@ export function ThankYou() {
       <div>
         <label>
           <span>Your Expense</span>
-          <span>$x</span>
+          <span>${expense}</span>
         </label>
       </div>
 
       <div>
         <label>
           <span>Your Savings</span>
-          <span>$x</span>
+          <span>${savings}</span>
         </label>
       </div>
 
