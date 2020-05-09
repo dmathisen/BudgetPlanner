@@ -4,7 +4,7 @@ export const budgetPlannerSlice = createSlice({
   name: 'budgetPlanner',
   initialState: {
     contribution: 15,
-    salary: null
+    salary: undefined
   },
   reducers: {
     setContribution: (state, action) => {
