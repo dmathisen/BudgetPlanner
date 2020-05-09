@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Login } from '../Login/Login';
 
 import { logOut } from '../Login/loginSlice';
-import { setContribution, setSalary } from './budgetPlannerSlice'
+import { setContribution, setSalary, calculateExpense, calculateSavings } from './budgetPlannerSlice'
 
 export function BudgetPlanner() {
   let history = useHistory();
@@ -30,17 +30,6 @@ export function BudgetPlanner() {
       setSavings(null);
     }
   }, [contribution, salary]);
-
-  // calculations
-  const calculateExpense = (contribution, salary) => {
-    const expense = (salary / 12) * (contribution / 100);
-    return expense.toFixed(2);
-  };
-  
-  const calculateSavings = (contribution, salary) => {
-    const savings = (salary / 12) * (1 - (contribution / 100));
-    return savings.toFixed(2);
-  };
 
   // events
   const handleChange = e => {

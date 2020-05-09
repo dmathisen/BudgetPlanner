@@ -16,5 +16,15 @@ export const budgetPlannerSlice = createSlice({
   },
 });
 
+export const calculateExpense = (contribution, salary) => {
+  const expense = (salary / 12) * (contribution / 100);
+  return expense.toFixed(2);
+};
+
+export const calculateSavings = (contribution, salary) => {
+  const savings = (salary / 12) * (1 - (contribution / 100));
+  return savings.toFixed(2);
+};
+
 export const { setContribution, setSalary } = budgetPlannerSlice.actions;
 export default budgetPlannerSlice.reducer;
