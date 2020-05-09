@@ -1,15 +1,14 @@
 Carver Edison Budget Planning App
 
-## Available Scripts
+### Installation
+Run `npm install`
 
-In the project directory, you can run:
+### Development
 
-### `npm start`
-
-Runs the app in the development mode.<br />
+Run `npm start`
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run build`
+### Deployment
 
-Builds the app for production to the `build` folder.<br />
-Copy `build` folder contents to webserver
+Run `npm run build`
+Copy files in `build` directory to webserver
