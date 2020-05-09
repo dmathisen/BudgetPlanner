@@ -44,10 +44,10 @@ export function BudgetPlanner() {
   const handleChange = e => {
     switch(e.target.name) {
       case 'salary':
-        setSalary(e.target.value);
+        dispatch(setSalary({salary: e.target.value}));
         break;
       case 'contribution':
-        setContribution(e.target.value);
+        dispatch(setContribution({contribution: e.target.value}));
         break;
       default:
          return;
