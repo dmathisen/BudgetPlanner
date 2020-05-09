@@ -63,6 +63,7 @@ export function ThankYou() {
         </label>
       </div>
 
+      <br />
       <a href="/" onClick={handleGoBackClick}>Go back</a>
     </>
   )
