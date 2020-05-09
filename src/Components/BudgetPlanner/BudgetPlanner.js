@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Login } from '../Login/Login';
+
 import { logOut } from '../Login/loginSlice';
+import { setContribution, setSalary } from './budgetPlannerSlice'
 
 export function BudgetPlanner() {
   const dispatch = useDispatch();
@@ -10,10 +12,10 @@ export function BudgetPlanner() {
   // global state
   const isLoggedIn = useSelector(state => state.login.isLoggedIn);
   const userName = useSelector(state => state.login.userName);
+  const contribution = useSelector(state => state.budgetPlanner.contribution);
+  const salary = useSelector(state => state.budgetPlanner.salary);
 
   // local state
-  const [contribution, setContribution] = useState(15);
-  const [salary, setSalary] = useState(null);
   const [expense, setExpense] = useState(null);
   const [savings, setSavings] = useState(null);
 
