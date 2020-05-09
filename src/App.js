@@ -4,16 +4,22 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { BudgetPlanner } from './Components/BudgetPlanner/BudgetPlanner';
 import { ThankYou } from './Components/ThankYou/ThankYou';
 
+import './App.css';
+
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="wrapper">
+        <div>
+          <img src="/logo.png" alt="Carver Edison" />
+          <h1>Budget Planner</h1>
 
-        <Switch>
-          <Route exact path="/" component={BudgetPlanner} />
-          <Route path="/thank-you" component={ThankYou} />
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={BudgetPlanner} />
+            <Route path="/thank-you" component={ThankYou} />
+          </Switch>
 
+        </div>
       </div>
     </BrowserRouter>
   );
