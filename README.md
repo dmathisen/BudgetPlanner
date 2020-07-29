@@ -1,4 +1,4 @@
-Carver Edison Budget Planning App
+Budget Planning App
 
 ### Installation
 Run `npm install`
