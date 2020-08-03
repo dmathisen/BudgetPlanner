@@ -11,8 +11,7 @@ function App() {
     <BrowserRouter>
       <div className="wrapper">
         <div>
-          <img src="/logo.png" alt="Carver Edison" />
-          <h1>Budget Planner</h1>
+          <h1>Budget Planner App</h1>
 
           <Switch>
             <Route exact path="/" component={BudgetPlanner} />
